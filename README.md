@@ -16,7 +16,9 @@
 - has_one :address
 - has_one :order
 
+
 <br>
+
 
 ## items テーブル
 
@@ -38,20 +40,25 @@
 - has_one :order
 - belongs_to :user
 
+
 <br>
+
 
 ## orders テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| name   | string     | null: false                    |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| user_id  | references | null: false, foreign_key: true |
+| item_id  | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
 
+
 <br>
+
 
 ## addresses テーブル
 
