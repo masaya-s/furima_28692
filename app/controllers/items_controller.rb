@@ -23,9 +23,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :category, :status, :postage, :prefecture, :shipping_day, :price).merge(user_id: current_user.id)
   end
-
-  # def set_tweet # editとshowの @tweet = Tweet.find(params[:id])を集約
-  #   @tweet = Tweet.find(params[:id])
-  # end
-
 end
