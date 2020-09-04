@@ -1,18 +1,21 @@
-function tax() {
-  const itemPrice = document.getElementById('item-price');
-  const addTaxPrice = document.getElementById('add-tax-price');
-  const profit = document.getElementById('profit');
-  const tax = 0.1;
+window.addEventListener('DOMContentLoaded', () => {
+  const path = location.pathname;
 
-  itemPrice.addEventListener('input', () => {
-    const price = itemPrice.value;
+  // '/items/new'以外のページでitemPrice.addEventListenerへのアクセスを制限する
+  if (path === '/items/new') {
+    const itemPrice = document.getElementById('item-price');
+    const addTaxPrice = document.getElementById('add-tax-price');
+    const profit = document.getElementById('profit');
+    const tax = 0.1;
 
-    // Math.floorによる端数の切り捨て計算をfeeに代入
-    const fee = Math.floor(price * tax);
+    itemPrice.addEventListener('input', () => {
+      const price = itemPrice.value;
 
-    addTaxPrice.innerHTML = fee;
-    profit.innerHTML = price - fee;
-  });
-}
+      // Math.floorによる端数の切り捨て計算をfeeに代入
+      const fee = Math.floor(price * tax);
 
-window.addEventListener('load', tax);
+      addTaxPrice.innerHTML = fee;
+      profit.innerHTML = price - fee;
+    });
+  }
+});
