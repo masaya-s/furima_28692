@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
   const path = location.pathname;
 
-  // '/items/new'以外のページでitemPrice.addEventListenerへのアクセスを制限する
-  if (path === '/items/new') {
+  // アクセスエラー防止の為、指定外のリンクでitemPrice.addEventListenerを発火させない
+  if (path === '/items/new' || '/items') {
     const itemPrice = document.getElementById('item-price');
     const addTaxPrice = document.getElementById('add-tax-price');
     const profit = document.getElementById('profit');
