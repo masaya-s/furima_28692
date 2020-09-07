@@ -126,14 +126,37 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-      <% @items.each do |item| %>
-        <li class='list'>
-          <%= link_to '#' do %>
-            <div class='item-img-content'>
-              <%= image_tag item.image, class: "item-img" %>
+      <% if @items != nil %>
+        <%# 商品が出品されている場合に表示 %>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to '#' do %>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+
+                <%# 商品が売れていればsold outの表示 %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+                <%# //商品が売れていればsold outの表示 %>
 
               </div>
-              <%# //商品が売れていればsold outの表示 %>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+        <%# 商品が出品されている場合に表示 %>
 
       <% else %>
         <%# 商品がない場合のダミー %>
