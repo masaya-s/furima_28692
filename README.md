@@ -30,7 +30,7 @@
 | ---------------- | ---------- | ------------------------------ |
 | name             | string     | null: false                    |
 | image            | string     | null: false                    |
-| price            | integer    | null: false                    | 
+| price            | integer    | null: false                    |
 | introduction     | text       | null: false                    |
 | category         | integer    | null: false                    |
 | status           | integer    | null: false                    |

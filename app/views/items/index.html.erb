@@ -126,7 +126,7 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-      <% if @items != nil %>
+      <% if @items[0] != nil %>
         <%# 商品が出品されている場合に表示 %>
         <% @items.each do |item| %>
           <li class='list'>
@@ -156,7 +156,7 @@
             <% end %>
           </li>
         <% end %>
-        <%# 商品が出品されている場合に表示 %>
+        <%# //商品が出品されている場合に表示 %>
 
       <% else %>
         <%# 商品がない場合のダミー %>
