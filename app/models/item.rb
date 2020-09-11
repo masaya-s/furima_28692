@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :category, :status, :postage, :prefecture, :shipping_day
 
   has_one_attached :image
+  has_one :order
   belongs_to :user
 
   # 空の投稿を保存できないようにする
