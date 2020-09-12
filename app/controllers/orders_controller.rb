@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:index]
+  before_action :excluding_seller, only: [:index]
+  before_action :excluding_purchased, only: [:index]
 
   def index
     @order = ItemOrder.new
@@ -33,8 +34,15 @@ class OrdersController < ApplicationController
     )
   end
 
-  def correct_user
+  def excluding_seller
     @item = Item.find(params[:item_id])
     redirect_to root_path if @item.user == current_user
+  end
+
+  def excluding_purchased
+    @item = Item.find(params[:item_id])
+    # Ordersテーブルのitem_idカラムを参照し、Itemsテーブルのidが一致するレコードを取得
+    @order = Order.find_by(item_id: @item.id)
+    redirect_to root_path if @order
   end
 end

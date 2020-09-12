@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('id DESC')
+    @orders = Order.includes(:item)
   end
 
   def new
@@ -21,6 +22,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    # Ordersテーブルのitem_idカラムを参照し、Itemsテーブルのidに一致するレコードを取得
+    @order = Order.find_by(item_id: @item.id)
   end
 
   def update
