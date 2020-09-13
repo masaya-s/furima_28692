@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if  @item.update(item_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
   def correct_user
     @item = Item.find(params[:id])
     # 現在のユーザーが自分以外の商品編集・更新ページにアクセスしようとすると、ホーム画面にリダイレクトさせる
-    redirect_to root_path unless @item.user==current_user
+    redirect_to root_path unless @item.user == current_user
   end
 end

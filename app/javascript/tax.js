@@ -1,13 +1,9 @@
 window.addEventListener('DOMContentLoaded', () => {
-  const path = location.pathname;
-
-  // アクセスエラー防止の為、指定外のリンクでitemPrice.addEventListenerを発火させない
-  if (path === '/items/new' || '/items') {
-    const itemPrice = document.getElementById('item-price');
-    const addTaxPrice = document.getElementById('add-tax-price');
-    const profit = document.getElementById('profit');
-    const tax = 0.1;
-
+  const itemPrice = document.getElementById('item-price');
+  const addTaxPrice = document.getElementById('add-tax-price');
+  const profit = document.getElementById('profit');
+  const tax = 0.1;
+  if (itemPrice) {
     itemPrice.addEventListener('input', () => {
       const price = itemPrice.value;
 
