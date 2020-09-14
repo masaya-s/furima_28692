@@ -19,7 +19,10 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <label class="img-upload-btn"><%= f.file_field :image, id:"item-image" %>ファイルを選択</label>
+        <div class="file-name" id='file-name'>
+          選択されていません
+        </div>
       </div>
     </div>
     <%# /出品画像 %>

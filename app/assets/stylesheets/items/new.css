@@ -83,12 +83,36 @@
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
+  max-width: 250px;
+  overflow: hidden; /* 枠が超えたテキストを見えないように */
+  text-overflow: ellipsis; /* 三点リーダー表示 */
+  white-space: nowrap; /* 改行しないように */
 }
 
 .click-upload>p {
   margin-bottom: 15px;
 }
 
+#item-image {
+  display: none;
+}
+
+.img-upload-btn {
+  display: inline-block;
+  cursor: pointer;
+  margin: 1em 0;
+  padding: 1em 1em;
+  line-height: 1.5;
+  background: #0099e8;
+  color: #FFF;
+  font-size: 0.9em;
+  border-radius: 30px;
+  box-shadow: 0 7px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.file-name {
+  display: inline;
+}
 /* /出品画像 */
 
 /* 商品名と商品説明 */

@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @items = Item.includes(:user).order('id DESC')
+    @items = Item.includes(:user, :order).order('id DESC').with_attached_image
   end
 
   def new
@@ -21,10 +21,12 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    # Ordersテーブルのitem_idカラムを参照し、Itemsテーブルのidに一致するレコードを取得
+    @order = Order.find_by(item_id: @item.id)
   end
 
   def update
-    if  @item.update(item_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -49,6 +51,6 @@ class ItemsController < ApplicationController
   def correct_user
     @item = Item.find(params[:id])
     # 現在のユーザーが自分以外の商品編集・更新ページにアクセスしようとすると、ホーム画面にリダイレクトさせる
-    redirect_to root_path unless @item.user==current_user
+    redirect_to root_path unless @item.user == current_user
   end
 end
