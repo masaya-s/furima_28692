@@ -3,8 +3,7 @@ class ItemsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @items = Item.includes(:user).order('id DESC')
-    @orders = Order.includes(:item)
+    @items = Item.includes(:user, :order).order('id DESC').with_attached_image
   end
 
   def new
